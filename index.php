@@ -49,6 +49,7 @@ try {
         echo "
             <div
             style='background-color: rosybrown'
+            class='flex flex-auto flex-col ml-10 mr-10 mt-0 mb-10 p-5 rounded-full'
             >
                 <p style='text-align: center' >Você precisa ter mais de 18 anos!</p>
             </div>
@@ -62,6 +63,7 @@ try {
         echo "
         <div
         style='background-color: rosybrown'
+        class='flex flex-auto flex-col ml-10 mr-10 mt-0 mb-10 p-5 rounded-full'
         >
             <p style='text-align: center' >Já existe uma conta com esse email!</p>
         </div>";
@@ -70,6 +72,7 @@ try {
             echo "
             <div
             style='background-color: rosybrown'
+            class='flex flex-auto flex-col ml-10 mr-10 mt-0 mb-10 p-5 rounded-full'
             >
                 <p style='text-align: center' >Insira um email válido!</p>
             </div>";
@@ -82,6 +85,7 @@ try {
         echo "
         <div
         style='background-color: rosybrown'
+        class='flex flex-auto flex-col ml-10 mr-10 mt-0 mb-10 p-5 rounded-full'
         >
             <h2 style='text-align: center'>ERRO:</h2>
             <p style='text-align: center' >A senha precisa ter pelo menos 6 caracteres, use letras e números!</p>
@@ -98,6 +102,7 @@ try {
             echo "
                 <div
                 style='background-color: skyblue'
+                class='flex flex-auto flex-col ml-10 mr-10 mt-0 mb-10 p-5 rounded-full'
                 >
                     <h2 style='text-align: center'>Obrigado!</h2>
                 </div>
@@ -106,6 +111,7 @@ try {
             echo "
             <div
             style='background-color: rosybrown'
+            class='flex flex-auto flex-col ml-10 mr-10 mt-0 mb-10 p-5 rounded-full'
             >
                 <h2 style='text-align: center'>ERRO AO SALVAR DADOS:</h2>
                 <p style='text-align: center' >{$e}</p>
@@ -115,10 +121,12 @@ try {
         echo "
         <div
         style='background-color: lemonchiffon'
+        class='flex flex-auto flex-col ml-10 mr-10 mt-0 mb-10 p-5 rounded-full'
         >
-            <h2 style='text-align: center'>ATENÇÃO</h2>
+            <div class='justify-content-center justify-items-center items-center'>
+                <h2 style='text-align: center'>ATENÇÃO</h2>
+            </div>
             <p style='text-align: center' > Nome, Data de Nascimento, E-mail e Senha são obrigatórios.</p>
-            <br>
             <p style='text-align: center'>Precisam ser preenchidos!</p>
         </div>";
     }
@@ -127,6 +135,7 @@ try {
     echo "
         <div
         style='background-color: rosybrown'
+        class='flex flex-auto flex-col ml-10 mr-10 mt-0 mb-10 p-5 rounded-full'
         >
             <h2 style='text-align: center'>ERRO INESPERADO:</h2>
             <p style='text-align: center' >{$e}</p>
