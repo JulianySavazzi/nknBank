@@ -99,6 +99,9 @@ try {
             ($user->getSenha()))){ /* verificando se os dados a ser salvos nao sao vazios */
         try{
             $userController->saveUser($user);
+            $send = mail(
+                $user->getEmail(), "Cadastro NKN BANK", "Parabéns, cadastro realizado com sucesso"
+            );
             echo "
                 <div
                 style='background-color: skyblue'
