@@ -1,5 +1,8 @@
 .DS_Store
 .idea/
 .env
-/vendor
+/vendor/graham-campbell
+/vendor/phpoption
+/vendor/symfony
+/vendor/vlucas
 test.php
