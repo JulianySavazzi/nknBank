@@ -40,7 +40,7 @@ class Controller
         $this->connection = $connection;
     }
 
-    public static function checkIdade(DateTime $birthDate, DateTime $now)
+    public static function checkIdade($birthDate, $now)
     {
         return $now->diff($birthDate)->y;
     }

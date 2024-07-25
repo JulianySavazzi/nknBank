@@ -43,25 +43,27 @@ $user = new Model\User(
 
 try {
     /* Dados do usuario vindos do formulario */
-//    $name = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
     $user->setNome((string)filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS));
 
     $birthDate = DateTime::createFromFormat(DATE_BR,
         (string)filter_input(INPUT_POST, "dataNascimento", FILTER_DEFAULT), $timezone);
-    $user->setDataNascimento((string)filter_input(INPUT_POST, "dataNascimento", FILTER_DEFAULT));
+//    $user->setDataNascimento((string)filter_input(INPUT_POST, "dataNascimento", FILTER_DEFAULT));
 
-//if(Controller\Controller::checkIdade(!empty($_POST["dataNascimento"]), $now) > 18) $birthDate =
-//    DateTime::createFromFormat(DATE_BR,
-//     filter_input(INPUT_POST, "dataNascimento", FILTER_DEFAULT), $timezone);
-//elseif(Controller\Controller::checkIdade(!empty($_POST["dataNascimento"]), $now) < 18){
-//    echo "
-//        <div
-//        style='background-color: rosybrown'
-//        >
-//            <p style='text-align: center' >Você precisa ter mais de 18 anos!</p>
-//        </div>
-//    ";
-//}
+    if(!empty($_POST["dataNascimento"]) &&
+        Controller\Controller::checkIdade(new DateTime($_POST["dataNascimento"]), $now) > 18)
+    {
+        $user->setDataNascimento((string)filter_input(INPUT_POST, "dataNascimento", FILTER_DEFAULT));
+    } elseif(!empty($_POST["dataNascimento"]) &&
+        Controller\Controller::checkIdade(new DateTime($_POST["dataNascimento"]), $now) < 18)
+    {
+        echo "
+            <div
+            style='background-color: rosybrown'
+            >
+                <p style='text-align: center' >Você precisa ter mais de 18 anos!</p>
+            </div>
+        ";
+    }
 
     if(!empty($_POST["email"]) &&
         filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL) && $userController->getUserByEmail((string)$_POST["email"]) === 0){
@@ -85,7 +87,6 @@ try {
     }
 
     if(!empty($_POST["senha"])  && Controller\Controller::checkPass((string)$_POST["senha"]))
-//        $password = filter_input(INPUT_POST, "senha", FILTER_DEFAULT);
         $user->setSenha(filter_input(INPUT_POST, "senha", FILTER_DEFAULT));
     elseif(!empty($_POST["senha"])) {
         echo "
@@ -97,12 +98,11 @@ try {
         </div>";
     }
 
-//    $whatsapp = filter_input(INPUT_POST, "whatsapp", FILTER_DEFAULT);
     $user->setWhatsapp((string)filter_input(INPUT_POST, "whatsapp", FILTER_DEFAULT));
 
     /* salvar dados na tabela lead*/
     var_dump(
-        $userController->getUserByEmail((string)$_POST["email"]),
+//        $userController->getUserByEmail((string)$_POST["email"]),
         $user->getNome(),
         $user->getDataNascimento(),
         $user->getEmail(),
@@ -132,10 +132,12 @@ try {
     } else {
         echo "
         <div
-        style='background-color: rosybrown'
+        style='background-color: lemonchiffon'
         >
-            <h2 style='text-align: center'>OS CAMPOS OBRIGATÓRIOS PRECISAM SER PREENCHIDOS!</h2>
-            <p style='text-align: center' > Nome, Data de Nascimento, E-mail e Senha são obrigatórios!</p>
+            <h2 style='text-align: center'>ATENÇÃO</h2>
+            <p style='text-align: center' > Nome, Data de Nascimento, E-mail e Senha são obrigatórios.</p>
+            <br>
+            <p style='text-align: center'>Precisam ser preenchidos!</p>
         </div>";
     }
 

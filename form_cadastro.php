@@ -2,7 +2,7 @@
 <main
 style="flex: content"
 >
-    <h1>Bem vindo ao NKN Bank</h1>
+    <h1>NKN Bank</h1>
     <p>
         Preencha seus dados para criar uma conta.
     </p>

@@ -12,7 +12,7 @@ const DATABASE_PASSWORD = "root";
 $now = new \DateTime('now', new \DateTimeZone("America/Sao_Paulo"));
 $bday = DateTime::createFromFormat("d/m/Y", "14/02/2000");
 
-//var_dump(\app\Controller\Controller::checkIdade($bday, $now));
+var_dump(\app\Controller\Controller::checkIdade($bday, $now));
 
 
 $now = new \DateTime('now', new \DateTimeZone("America/Sao_Paulo"));
@@ -25,8 +25,8 @@ $connection = new PDO(
 );
 $userController = new \app\Controller\UserController($connection);
 
-var_dump(
-    $userController->getUserByEmail("juliany_saz@hotmail.com"),
-    $userController->getUserByEmail("brunosaz@hotmail.com"),
-    $userController->getUserByEmail("oi@oi.com"),
-);
+//var_dump(
+//    $userController->getUserByEmail("juliany_saz@hotmail.com"),
+//    $userController->getUserByEmail("brunosaz@hotmail.com"),
+//    $userController->getUserByEmail("oi@oi.com"),
+//);
