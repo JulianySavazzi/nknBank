@@ -105,7 +105,13 @@ try {
                 class='flex flex-auto flex-col ml-10 mr-10 mt-0 mb-10 p-5 rounded-full'
                 >
                     <h2 style='text-align: center'>Obrigado!</h2>
+                    <p style='text-align: center'>Espere o redirecionamento...</p>
                 </div>
+                <script>
+                    setTimeout(() => {
+                        window.location.href = 'https://nknbank.com.br'
+                    }, 2500)
+                </script>
             ";
         } catch (PDOException $e){
             echo "
