@@ -19,17 +19,6 @@ class Controller
         $this->connection = $connection;
     }
 
-    public static function verifyConnection($connection): bool
-    {
-        try {
-            if($connection) echo "<h1>Conectado com sucesso!</h1>";
-            return true;
-        } catch (PDOException $e) {
-            var_dump($connection);
-            return false;
-        }
-    }
-
     protected function getConnection(): PDO
     {
         return $this->connection;

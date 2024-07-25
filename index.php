@@ -24,6 +24,7 @@ $connection = new PDO(
 /* pagina de cadastro */
 include __DIR__."/form_cadastro.php";
 
+/* inicializando objetos para manipular usuarios */
 $userController = new Controller\UserController($connection);
 $user = new Model\User(
     "",
@@ -33,6 +34,7 @@ $user = new Model\User(
     ""
 );
 
+/* manipulação dos dados do usuario */
 try {
     /* Dados do usuario vindos do formulario */
     $user->setNome((string)filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS));
@@ -90,7 +92,7 @@ try {
 
     /* salvar dados na tabela lead*/
     if(!empty($user->getNome()) && !empty($user->getDataNascimento() && !empty($user->getEmail()) && !empty
-            ($user->getSenha()))){
+            ($user->getSenha()))){ /* verificando se os dados a ser salvos nao sao vazios */
         try{
             $userController->saveUser($user);
             echo "

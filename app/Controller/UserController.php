@@ -8,28 +8,14 @@ use PDO;
 
 class UserController extends Controller
 {
-//    public User $user;
 
     public function __construct($connection)
     {
         parent::__construct($connection);
-//        $this->user = $user;
-    }
-
-    protected function getConnection(): PDO
-    {
-        return parent::getConnection();
-    }
-
-    protected function setConnection(PDO $connection): void
-    {
-        parent::setConnection($connection);
     }
 
     public function saveUser(User $user)
     {
-        $conn = $this->connection;
-
         /* dados do usuario */
         $nome = $user->getNome();
         $dataNascimento = $user->getDataNascimento();
@@ -40,7 +26,7 @@ class UserController extends Controller
         $now = new \DateTime('now', new \DateTimeZone("America/Sao_Paulo"));
         $datalog = $now->format("Y/m/d H:i:s"); /* mysql format */
 
-        $insert = $conn->prepare("INSERT INTO lead 
+        $insert = $this->connection->prepare("INSERT INTO lead 
             (nome, datanascimento, email, senha, whatsapp, datalog) 
             VALUES (?, ?, ?, ?, ?, ?)");
 
