@@ -10,9 +10,6 @@ const DATABASE_NAME = "nkn_bank";
 const DATABASE_USER = "root";
 const DATABASE_PASSWORD = "root";
 
-/* formatar data -> date mysql */
-const DATE_BR = "d/m/Y";
-
 /* data e horario atual -> datalog */
 $timezone = new \DateTimeZone("America/Sao_Paulo");
 $now = new \DateTime('now', $timezone);
@@ -22,11 +19,6 @@ $connection = new PDO(
         "mysql:host=".DATABASE_HOST.";"."dbname=".DATABASE_NAME,
     DATABASE_USER,
     DATABASE_PASSWORD
-);
-
-var_dump(
-    $_POST,
-//    $now
 );
 
 /* pagina de cadastro */
@@ -45,12 +37,8 @@ try {
     /* Dados do usuario vindos do formulario */
     $user->setNome((string)filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS));
 
-    $birthDate = DateTime::createFromFormat(DATE_BR,
-        (string)filter_input(INPUT_POST, "dataNascimento", FILTER_DEFAULT), $timezone);
-//    $user->setDataNascimento((string)filter_input(INPUT_POST, "dataNascimento", FILTER_DEFAULT));
-
     if(!empty($_POST["dataNascimento"]) &&
-        Controller\Controller::checkIdade(new DateTime($_POST["dataNascimento"]), $now) > 18)
+        Controller\Controller::checkIdade(new DateTime($_POST["dataNascimento"]), $now) >= 18)
     {
         $user->setDataNascimento((string)filter_input(INPUT_POST, "dataNascimento", FILTER_DEFAULT));
     } elseif(!empty($_POST["dataNascimento"]) &&
@@ -101,14 +89,6 @@ try {
     $user->setWhatsapp((string)filter_input(INPUT_POST, "whatsapp", FILTER_DEFAULT));
 
     /* salvar dados na tabela lead*/
-    var_dump(
-//        $userController->getUserByEmail((string)$_POST["email"]),
-        $user->getNome(),
-        $user->getDataNascimento(),
-        $user->getEmail(),
-        $user->getSenha()
-    );
-
     if(!empty($user->getNome()) && !empty($user->getDataNascimento() && !empty($user->getEmail()) && !empty
             ($user->getSenha()))){
         try{
