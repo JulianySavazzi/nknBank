@@ -16,13 +16,12 @@ use app\Controller\UserController;
 
 class User
 {
-    public int $id;
+//    public int $id;
     public string $nome;
     public string $dataNascimento;
     public string $email;
     public string $senha;
     public string $whatsapp;
-    public string $idade;
 
     public function __construct($nome, $dataNascimento, $email, $senha, $whatsapp = null)
     {
@@ -33,11 +32,10 @@ class User
         $this->whatsapp = $whatsapp;
     }
 
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
+//    public function getId(): int
+//    {
+//        return $this->id;
+//    }
 
     public function getNome(): string
     {
@@ -89,8 +87,4 @@ class User
         $this->whatsapp = $whatsapp;
     }
 
-    public function getIdade(): string
-    {
-        return $this->idade;
-    }
 }
